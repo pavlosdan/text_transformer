@@ -47,6 +47,9 @@ class TextTransformerItem extends FieldItemBase implements FieldItemInterface {
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
     $properties['value'] = DataDefinition::create('string')
       ->setLabel(t('Text to be transformed'))
+      // Use the ID of the constraint as it was defined
+      // in the annotation of the constraint definition
+      ->addConstraint('TextLimit')
       ->setRequired(FALSE);
 
     $properties['type'] = DataDefinition::create('string')
